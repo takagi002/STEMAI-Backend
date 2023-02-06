@@ -1,9 +1,10 @@
-const classActions = require("../controllers/classController");
-var router = express.Router;
+const classActions = require("../controllers/classController.ts");
+var express = require("express");
+var router = express.Router();
 
 router.get('/', classActions.getClassesC);
-router.get('/objectID/:_id', classActions.getOneClassByCourseIDC);
-router.get('/courseID/:course_ID', classActions.getOneClassByIDC);
+router.get('/objectID/:_id', classActions.getOneClassByObjectIDC);
+router.get('/courseID/:course_ID', classActions.getOneClassByCourseIDC);
 router.post('/', classActions.createClassC);
 router.patch('/objectID/:_id', classActions.updateClassByObjectIDC);
 router.patch('/courseID/:course_ID', classActions.updateClassByCourseIDC);

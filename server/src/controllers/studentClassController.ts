@@ -1,4 +1,4 @@
-const studentClassService = require('../services/studentClassService');
+const studentClassService = require('../services/studentClassService.ts');
 
 const getStudentClassesC = async(req, res) => {
     try{

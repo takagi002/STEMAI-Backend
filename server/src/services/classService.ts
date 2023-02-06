@@ -1,4 +1,4 @@
-let classModel = require('../models/class');
+let classModel = require('../models/class.ts');
 
 const getClasses = async () => {
     try{

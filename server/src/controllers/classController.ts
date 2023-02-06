@@ -1,4 +1,4 @@
-const classService = require('../services/classService');
+const classService = require('../services/classService.ts');
 
 const getClassesC = async(req, res) => {
     try{
@@ -98,11 +98,11 @@ const deleteClassByCourseIDC = async(req, res) => {
 
 module.exports.getClassesC = getClassesC;
 module.exports.getOneClassByObjectIDC = getOneClassByObjectIDC;
-module.exports.getOneClassByIDC = getOneClassByCourseIDC;
+module.exports.getOneClassByCourseIDC = getOneClassByCourseIDC;
 module.exports.createClassC = createClassC;
 module.exports.updateClassByObjectIDC = updateClassByObjectIDC;
-module.exports.updateClassByIDC = updateClassByCourseIDC;
+module.exports.updateClassByCourseIDC = updateClassByCourseIDC;
 module.exports.deleteClassByObjectIDC = deleteClassByObjectIDC;
-module.exports.deleteClassByIDC = deleteClassByCourseIDC;
+module.exports.deleteClassByCourseIDC = deleteClassByCourseIDC;
 
 

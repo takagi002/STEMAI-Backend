@@ -1,4 +1,4 @@
-const studentService = require('../services/studentService');
+const studentService = require('../services/studentService.ts');
 
 const getStudentsC = async(req, res) => {
     try{

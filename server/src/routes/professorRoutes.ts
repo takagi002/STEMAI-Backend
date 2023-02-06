@@ -1,5 +1,6 @@
-const professorActions = require("../controllers/professorController");
-var router = express.Router;
+const professorActions = require("../controllers/professorController.ts");
+var express = require("express");
+var router = express.Router();
 
 router.get('/', professorActions.getProfessorsC);
 router.get('/objectID/:_id', professorActions.getOneProfessorByProfessorIDC);

@@ -1,4 +1,4 @@
-let professor = require('../models/Professor');
+let professor = require('../models/professor.ts');
 
 const getProfessors = async () => {
     try{

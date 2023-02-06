@@ -1,3 +1,4 @@
+var mongoose = require('mongoose');
 
 const professorSchema = new mongoose.Schema({
     professor_ID: {

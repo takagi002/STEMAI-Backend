@@ -11,11 +11,11 @@ const getClassesC = async(req, res) => {
     }
 }
 
-const getOneClassByIDC = async(req, res) => {
-    const _ID = req.params._ID
+const getOneClassByCourseIDC = async(req, res) => {
+    const course_ID = req.params._ID
 
     try{
-        const aClass = await classService.getOneClassByID(_ID);
+        const aClass = await classService.getOneClassByCourseID(course_ID);
 
         res.header('Access-Control-Allow-Origin', '*');
         res.status(200).json(aClass);
@@ -60,13 +60,13 @@ const updateClassByObjectIDC = async(req, res) => {
     }
 }
 
-const updateClassByIDC = async(req, res) => {
-    const _ID = req.params._ID;
+const updateClassByCourseIDC = async(req, res) => {
+    const course_ID = req.params._ID;
     try{
-        await classService.updateClassByID(_ID, req.body);
+        await classService.updateClassByCourseID(course_ID, req.body);
 
         res.header('Access-Control-Allow-Origin', '*');
-        res.status(202).json(_ID);
+        res.status(202).json(course_ID);
     } catch(error) {
         res.status(401).json({message: error.message});
     }
@@ -84,13 +84,13 @@ const deleteClassByObjectIDC = async(req, res) => {
     }
 }
 
-const deleteClassByIDC = async(req, res) => {
-    const _ID = req.params._ID;
+const deleteClassByCourseIDC = async(req, res) => {
+    const course_ID = req.params._ID;
     try{
-        await classService.deleteClassByID(_ID, req.body);
+        await classService.deleteClassByCourseID(course_ID, req.body);
 
         res.header('Access-Control-Allow-Origin', '*');
-        res.status(203).json(_ID);
+        res.status(203).json(course_ID);
     } catch(error) {
         res.status(402).json({message: error.message});
     }
@@ -98,11 +98,11 @@ const deleteClassByIDC = async(req, res) => {
 
 module.exports.getClassesC = getClassesC;
 module.exports.getOneClassByObjectIDC = getOneClassByObjectIDC;
-module.exports.getOneClassByIDC = getOneClassByIDC;
+module.exports.getOneClassByIDC = getOneClassByCourseIDC;
 module.exports.createClassC = createClassC;
 module.exports.updateClassByObjectIDC = updateClassByObjectIDC;
-module.exports.updateClassByIDC = updateClassByIDC;
+module.exports.updateClassByIDC = updateClassByCourseIDC;
 module.exports.deleteClassByObjectIDC = deleteClassByObjectIDC;
-module.exports.deleteClassByIDC = deleteClassByIDC;
+module.exports.deleteClassByIDC = deleteClassByCourseIDC;
 
 

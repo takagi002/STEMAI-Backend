@@ -10,7 +10,7 @@ const professorSchema = new mongoose.Schema({
         required: true
     },
     in_Department: {
-        type: Boolean,
+        type: String,
         required: true
     },
     tenured: {

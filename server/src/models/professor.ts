@@ -22,7 +22,7 @@ const professorSchema = new mongoose.Schema({
         required: true
     },
     teaching_Time: {
-        type: Number,
+        type: String,
         required: true
     },
     num_Of_Course: {

@@ -10,7 +10,7 @@ const classSchema = new mongoose.Schema({
         required: true
     },
     classroom: {
-        type: Number,
+        type: String,
         required: true,
     },
     retaken_Percentage: {
@@ -30,14 +30,12 @@ const classSchema = new mongoose.Schema({
         required: true
     },
     course_Type: {
-        type: Number,
+        type: String,
         required: true
     },
     is_Stem_Pass: {
-        type: Number,
-        required: true,
-        min: 0,
-        max: 1
+        type: Boolean,
+        required: true
     }
 });
 

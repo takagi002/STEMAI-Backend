@@ -6,7 +6,7 @@ const studentSchema = new mongoose.Schema({
         required: true
     },
     current_Period: {
-        type: Number,
+        type: String,
         required: true,
     },
     is_Athlete: {
@@ -22,7 +22,7 @@ const studentSchema = new mongoose.Schema({
         required: true
     },
     major_Group: {
-        type: Number,
+        type: String,
         required: true,
     }, 
     completed_Credits: {

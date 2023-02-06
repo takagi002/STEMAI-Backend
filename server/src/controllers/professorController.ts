@@ -2,7 +2,7 @@ const professerService = require('../services/professorService.ts');
 
 const getProfessersC = async(req, res) => {
     try{
-        const professers = await professerService.getProfessers({});
+        const professers = await professerService.getProfessors({});
 
         res.header('Access-Control-Allow-Origin', '*');
         res.status(200).json(professers);

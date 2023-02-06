@@ -106,7 +106,7 @@ const deleteStudentByStudentID = async(query) => {
     }
 }
 
-module.exports.getStudentes = getStudents;
+module.exports.getStudents = getStudents;
 module.exports.getOneStudentByObjectID = getOneStudentByObjectID;
 module.exports.getOneStudentByStudentID = getOneStudentByStudentID;
 module.exports.createStudent = createStudent;

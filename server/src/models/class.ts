@@ -1,3 +1,4 @@
+var mongoose = require('mongoose');
 
 const classSchema = new mongoose.Schema({
     course_ID: {
@@ -34,7 +35,9 @@ const classSchema = new mongoose.Schema({
     },
     is_Stem_Pass: {
         type: Number,
-        required: true
+        required: true,
+        min: 0,
+        max: 1
     }
 });
 

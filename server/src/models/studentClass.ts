@@ -1,3 +1,4 @@
+var mongoose = require('mongoose');
 
 const studentClassSchema = new mongoose.Schema({
     student_ID: {

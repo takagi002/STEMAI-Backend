@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+var mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 
 const DEV_URI = process.env.DEV_URI;

@@ -11,6 +11,19 @@ app.use(express.json());
 
 const dbConnect = require('./src/config/dbConnect.ts');
 
+const studentClassRoutes = require('./src/routes/studentClassRoutes');
+app.use('/studentClass', studentClassRoutes);
+
+const studentRoutes = require('./src/routes/studentRoutes');
+app.use('/student', studentRoutes);
+
+const classRoutes = require('./src/routes/classRoutes');
+app.use('/class', classRoutes);
+
+const professorRoutes = require('./src/routes/professorRoutes');
+app.use('/professor', professorRoutes);
+
+
 const server = app.listen(PORT, () => {
   console.log("Server is running at port " + PORT);
 });

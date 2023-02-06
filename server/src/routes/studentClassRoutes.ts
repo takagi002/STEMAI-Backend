@@ -1,5 +1,5 @@
 const studentClassActions = require("../controllers/studentClassController");
-let router = express.Router;
+var router = express.Router;
 
 router.get('/', studentClassActions.getStudentClassesC);
 router.get('/objectID/:_id', studentClassActions.getOneStudentClassByStudentIDC);

@@ -12,7 +12,7 @@ const getClassesC = async(req, res) => {
 }
 
 const getOneClassByCourseIDC = async(req, res) => {
-    const course_ID = req.params._ID
+    const course_ID = req.params.course_ID
 
     try{
         const aClass = await classService.getOneClassByCourseID(course_ID);
@@ -61,7 +61,7 @@ const updateClassByObjectIDC = async(req, res) => {
 }
 
 const updateClassByCourseIDC = async(req, res) => {
-    const course_ID = req.params._ID;
+    const course_ID = req.params.course_ID;
     try{
         await classService.updateClassByCourseID(course_ID, req.body);
 
@@ -85,7 +85,7 @@ const deleteClassByObjectIDC = async(req, res) => {
 }
 
 const deleteClassByCourseIDC = async(req, res) => {
-    const course_ID = req.params._ID;
+    const course_ID = req.params.course_ID;
     try{
         await classService.deleteClassByCourseID(course_ID, req.body);
 

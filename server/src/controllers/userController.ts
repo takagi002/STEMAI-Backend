@@ -98,7 +98,7 @@ const deleteUserByIDC = async(req, res) => {
 
 module.exports.getUsersC = getUsersC;
 module.exports.getOneUserByObjectIDC = getOneuserByObjectIDC;
-module.exports.getOneUserByCourseIDC = getOneUserByIDC;
+module.exports.getOneUserByIDC = getOneUserByIDC;
 module.exports.createUserC = createUserC;
 module.exports.updateUserByObjectIDC = updateUserByObjectIDC;
 module.exports.updateUserByIDC = updateUserByIDC;

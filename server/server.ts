@@ -23,6 +23,9 @@ app.use('/class', classRoutes);
 const professorRoutes = require('./src/routes/professorRoutes.ts');
 app.use('/professor', professorRoutes);
 
+const emailRoutes = require('./src/routes/emailRoutes.ts');
+app.use('/email', emailRoutes);
+
 
 const server = app.listen(PORT, () => {
   console.log("Server is running at port " + PORT);

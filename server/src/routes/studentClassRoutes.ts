@@ -3,7 +3,7 @@ var express = require("express");
 var router = express.Router();
 
 router.get('/', studentClassActions.getStudentClassesC);
-router.get('/objectID/:_id', studentClassActions.getOneStudentClassByStudentIDC);
+router.get('/objectID/:_id', studentClassActions.getOneStudentClassByObjectIDC);
 router.get('/studentID/:student_ID', studentClassActions.getOneStudentClassByStudentIDC);
 router.post('/', studentClassActions.createStudentClassC);
 router.patch('/objectID/:_id', studentClassActions.updateStudentClassByObjectIDC);

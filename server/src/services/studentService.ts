@@ -64,7 +64,7 @@ const updateStudentByObjectID = async(id,query) =>{
            
         });
     } catch(error){
-        throw Error("Error updating coach");
+        throw Error("Error updating student");
     }
 }
 

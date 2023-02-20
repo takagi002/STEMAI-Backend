@@ -1,15 +1,15 @@
 var mongoose = require('mongoose');
 
 const professorSchema = new mongoose.Schema({
-    professor_ID: {
+    prof_id: {
         type: Number,
         required: true
     },
-    perc_Pass: {
-        type: Number,
+    dept: {
+        type: String,
         required: true
     },
-    in_Department: {
+    experience: {
         type: String,
         required: true
     },
@@ -17,18 +17,11 @@ const professorSchema = new mongoose.Schema({
         type: Boolean,
         required: true
     },
-    adjunct: {
-        type: Boolean,
-        required: true
-    },
-    teaching_Time: {
-        type: String,
-        required: true
-    },
-    num_Of_Course: {
+    perc_passed: {
         type: Number,
         required: true
     }
+      
 });
 
 module.exports = mongoose.model("Professor", professorSchema);

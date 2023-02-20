@@ -18,7 +18,7 @@ const getOneProfessorByObjectID = async (query) => {
 
 const getOneProfessorByProfessorID = async (query) => {
     try {
-        return await professor.findOne({professor_ID: query});
+        return await professor.findOne({prof_id: query});
     } catch(error) {
         throw Error("Error getting one Professor");
     }
@@ -26,13 +26,8 @@ const getOneProfessorByProfessorID = async (query) => {
 
 const createProfessor = async (query) => {
     const newProfessor = new professor({
-        professor_ID: query.professor_ID,
-        perc_Pass: query.perc_Pass,
-        in_Department: query.in_Department,
-        tenured: query.tenured,
-        adjunct: query.adjunct,
-        teaching_Time: query.teaching_Time,
-        num_Of_Course: query.num_Of_Course
+        prof_id: query.prof_id,
+
     });
     try {
         await newProfessor.save();
@@ -49,13 +44,11 @@ const updateProfessorByObjectID = async(id,query) =>{
             _id: id
         },
         {
-            professor_ID: query.professor_ID,
-            perc_Pass: query.perc_Pass,
-            in_Department: query.in_Department,
+            prof_ID: query.prof_ID,
+            dept: query.debt,
+            experience: query.experience,
             tenured: query.tenured,
-            adjunct: query.adjunct,
-            teaching_Time: query.teaching_Time,
-            num_Of_Course: query.num_Of_Course
+            perc_pass: query.perc_pass
         });
     } catch(error){
         throw Error("Error updating professor");
@@ -65,16 +58,14 @@ const updateProfessorByObjectID = async(id,query) =>{
 const updateProfessorByProfessorID = async(id,query) =>{
     try {
         await professor.findOneAndUpdate({
-            professor_ID: id
+            prof_id: id
         },
         {
-            professor_ID: query.professor_ID,
-            perc_Pass: query.perc_Pass,
-            in_Department: query.in_Department,
+            prof_ID: query.prof_ID,
+            dept: query.debt,
+            experience: query.experience,
             tenured: query.tenured,
-            adjunct: query.adjunct,
-            teaching_Time: query.teaching_Time,
-            num_Of_Course: query.num_Of_Course
+            perc_pass: query.perc_pass
         });
     } catch(error){
         throw Error("Error updating professor");
@@ -91,7 +82,7 @@ const deleteProfessorByObjectID = async(query) => {
 
 const deleteProfessorByProfessorID = async(query) => {
     try {
-        await professor.findOneAndRemove({professor_ID: query});
+        await professor.findOneAndRemove({prof_id: query});
     } catch(error) {
         throw Error("Error deleting Professor");
     }

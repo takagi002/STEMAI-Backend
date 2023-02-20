@@ -18,7 +18,7 @@ const getOneStudentByObjectID = async (query) => {
 
 const getOneStudentByStudentID = async (query) => {
     try {
-        return await student.findOne({student_ID: query});
+        return await student.findOne({student_id: query});
     } catch(error) {
         throw Error("Error getting one Student");
     }
@@ -27,14 +27,14 @@ const getOneStudentByStudentID = async (query) => {
 const createStudent = async (query) => {
     const newStudent = new student({
         student_ID: query.student_ID,
-        current_Period: query.current_Period,
-        is_Athlete: query.is_Athlete,
-        is_Work_Study: query.is_Work_Study,
-        is_Full_Time: query.is_Full_Time,
-        major_Group: query.major_Group,
-        completed_Credits: query.completed_Credits,
-        attending_Tutoring: query.attending_Tutoring,
-        stem_Grade_Score: query.stem_Grade_Score
+        grad_class: query.grad_class,
+        majors: query.majors,
+        gpa: query.gpa,
+        completed_credits: query.completed_Credits,
+        distance_from_stem: query.distance_from_stem,
+        is_work_study: query.is_work_study,
+        is_athlete: query.is_athlete,
+        num_courses_taking: query.num_courses_taking
         
     });
     try {
@@ -53,14 +53,14 @@ const updateStudentByObjectID = async(id,query) =>{
         },
         {
             student_ID: query.student_ID,
-            current_Period: query.current_Period,
-            is_Athlete: query.is_Athlete,
-            is_Work_Study: query.is_Work_Study,
-            is_Full_Time: query.is_Full_Time,
-            major_Group: query.major_Group,
-            completed_Credits: query.completed_Credits,
-            attending_Tutoring: query.attending_Tutoring,
-            stem_Grade_Score: query.stem_Grade_Score
+            grad_class: query.grad_class,
+            majors: query.majors,
+            gpa: query.gpa,
+            completed_credits: query.completed_Credits,
+            distance_from_stem: query.distance_from_stem,
+            is_work_study: query.is_work_study,
+            is_athlete: query.is_athlete,
+            num_courses_taking: query.num_courses_taking
            
         });
     } catch(error){
@@ -75,14 +75,14 @@ const updateStudentByStudentID = async(id,query) =>{
         },
         {
             student_ID: query.student_ID,
-            current_Period: query.current_Period,
-            is_Athlete: query.is_Athlete,
-            is_Work_Study: query.is_Work_Study,
-            is_Full_Time: query.is_Full_Time,
-            major_Group: query.major_Group,
-            completed_Credits: query.completed_Credits,
-            attending_Tutoring: query.attending_Tutoring,
-            stem_Grade_Score: query.stem_Grade_Score
+            grad_class: query.grad_class,
+            majors: query.majors,
+            gpa: query.gpa,
+            completed_credits: query.completed_Credits,
+            distance_from_stem: query.distance_from_stem,
+            is_work_study: query.is_work_study,
+            is_athlete: query.is_athlete,
+            num_courses_taking: query.num_courses_taking
             
         });
     } catch(error){
@@ -100,7 +100,7 @@ const deleteStudentByObjectID = async(query) => {
 
 const deleteStudentByStudentID = async(query) => {
     try {
-        await student.findOneAndRemove({student_ID: query});
+        await student.findOneAndRemove({student_id: query});
     } catch(error) {
         throw Error("Error deleting student");
     }

@@ -40,10 +40,10 @@ const createPrediction = async (query) => {
     }
 }
 
-const updatePredictionByObjectID = async(id,query) =>{
+const updatePredictionByObjectID = async(_id,query) =>{
     try {
         await predictionModel.findOneAndUpdate({
-            _id: id
+            _id: _id
         },
         {
             student_id: query.student_id,
@@ -56,10 +56,10 @@ const updatePredictionByObjectID = async(id,query) =>{
     }
 }
 
-const updatePredictionByStudentID = async(id,query) =>{
+const updatePredictionByStudentID = async(student_id,query) =>{
     try {
         await predictionModel.findOneAndUpdate({
-            student_id: id
+            student_id: student_id
         },
         {
             student_id: query.student_id,

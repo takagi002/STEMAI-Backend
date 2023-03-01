@@ -38,10 +38,10 @@ const createProfessor = async (query) => {
     }
 }
 
-const updateProfessorByObjectID = async(id,query) =>{
+const updateProfessorByObjectID = async(_id,query) =>{
     try {
         await professor.findOneAndUpdate({
-            _id: id
+            _id: _id
         },
         {
             prof_ID: query.prof_ID,
@@ -55,10 +55,10 @@ const updateProfessorByObjectID = async(id,query) =>{
     }
 }
 
-const updateProfessorByProfessorID = async(id,query) =>{
+const updateProfessorByProfessorID = async(prof_id,query) =>{
     try {
         await professor.findOneAndUpdate({
-            prof_id: id
+            prof_id: prof_id
         },
         {
             prof_ID: query.prof_ID,

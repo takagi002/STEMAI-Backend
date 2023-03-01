@@ -1,8 +1,8 @@
 const emailService = require('../services/emailService.ts');
 
-const sendEmailC = async(req, res) => {
+const sendNotificationEmailC = async(req, res) => {
     try{
-        const resp = emailService.sendEmail(req.body);
+        const resp = emailService.sendNotificationEmail(req.body);
 
         res.header('Access-Control-Allow-Origin', '*');
         res.status(200).json(resp);
@@ -11,4 +11,4 @@ const sendEmailC = async(req, res) => {
     }
 }
 
-module.exports.sendEmailC = sendEmailC;
+module.exports.sendNotificationEmailC = sendNotificationEmailC;

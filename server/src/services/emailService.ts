@@ -13,13 +13,35 @@ let mailTransporter = nodemailer.createTransport({
  
 
  
-const sendEmail = async (query) => {
-    const recepitient = query.email;
+const sendNotificationEmail = async (query) => {
+    const recipient = query.recipient;
+
+    let mailDetails = {
+        from: process.env.EMAIL,
+        to: recipient,
+        subject: 'You Will Now Receive Notifications from StemAI',
+        text: 'You have signed up to receive notification from StemAI. You will receive tutoring reccomendation every quarter of the semester.'
+        + ' If you would like to stop receiving emails from StemAI please return to the StemAI webpage and go to settings and deselect RECEIVE NOTIFICATIONS.'
+    };
+
+    mailTransporter.sendMail(mailDetails, function(err, data) {
+        if(err) {
+            console.log(err);
+            return("Error: " + err);
+        } else {
+            console.log("Email Sent");
+            return("Email Sent")
+        }
+    });
+}
+
+const sendRecEmail = async (query) => {
+    const recipient = query.recipient;
     const classRec = query.classRec;
 
     let mailDetails = {
         from: process.env.EMAIL,
-        to: recepitient,
+        to: recipient,
         subject: 'Tutoring Recommendation',
         text: 'We believe that you would benefit from tutoring for ' + classRec + ' due to previous students experience in this course.' +
         'REMINDER: This is just a recommendation based on past students data. We are not calling you dumb'
@@ -36,4 +58,4 @@ const sendEmail = async (query) => {
     });
 }
 
-module.exports.sendEmail = sendEmail;
+module.exports.sendNotificationEmail = sendNotificationEmail;

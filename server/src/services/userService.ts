@@ -16,9 +16,9 @@ const getOneUserByObjectID = async (query) => {
     }
 }
 
-const getOneUserByID = async (query) => {
+const getOneUserByGannonID = async (query) => {
     try {
-        return await user.findOne({ID: query});
+        return await user.findOne({gannon_id: query});
     } catch(error) {
         throw Error("Error getting one User");
     }
@@ -26,49 +26,51 @@ const getOneUserByID = async (query) => {
 
 const createUser = async (query) => {
     const newUser = new user({
-        email: query.email,
+        gmail: query.gmail,
         userType: query.userType,
-        ID: query.ID
+        gannon_id: query.gannon_id
     });
     try {
         await newUser.save();
 
         return newUser;
     } catch (error){
-        throw Error("Error creating User");
+        throw Error("Error creating User " + error);
     }
 }
 
-const updateUserByObjectID = async(id,query) =>{
+const updateUserByObjectID = async(_id,query) =>{
     try {
         await user.findOneAndUpdate({
-            _id: id
+            _id: _id
         },
         {
-            email: query.email,
+            gmail: query.gmail,
             userType: query.userType,
-            ID: query.ID
+            gannon_id: query.gannon_id
            
         });
     } catch(error){
-        throw Error("Error updating user");
+        throw Error("Error updating user " + error);
     }
 }
 
-const updateUserByID = async(id,query) =>{
+const updateUserByGmail = async(gmail,query) =>{
     try {
         await user.findOneAndUpdate({
-            ID: id
+            gmail: gmail
         },
         {
-            email: query.email,
+            gmail: query.gmail,
             userType: query.userType,
-            ID: query.ID
+            gannon_id: query.gannon_id
         });
     } catch(error){
         throw Error("Error updating User");
     }
 }
+
+
 
 const deleteUserByObjectID = async(query) => {
     try {
@@ -78,19 +80,32 @@ const deleteUserByObjectID = async(query) => {
     }
 }
 
-const deleteUserByID = async(query) => {
+const deleteUserByGannonID = async(query) => {
     try {
-        await user.findOneAndRemove({ID: query});
+        await user.findOneAndRemove({gannon_id: query});
     } catch(error) {
         throw Error("Error deleting User");
     }
 }
 
+const checkUserExists = async(query) => {
+    try {
+        if(await user.countDocuments({gmail: query}) == 0){
+            return false;
+        } else {
+            return true;
+        }
+    } catch(error) {
+        throw Error("Error checking if user exists " + error)
+    }
+}
+
 module.exports.getUsers = getUsers;
 module.exports.getOneUserByObjectID = getOneUserByObjectID;
-module.exports.getOneUserByID = getOneUserByID;
+module.exports.getOneUserByGannonID = getOneUserByGannonID;
 module.exports.createUser = createUser;
 module.exports.updateUserByObjectID = updateUserByObjectID;
-module.exports.updateUserByID = updateUserByID;
+module.exports.updateUserByGmail = updateUserByGmail;
 module.exports.deleteUserByObjectID = deleteUserByObjectID;
-module.exports.deleteUserByID = deleteUserByID;
+module.exports.deleteUserByGannonID = deleteUserByGannonID;
+module.exports.checkUserExists = checkUserExists;

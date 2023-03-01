@@ -4,11 +4,12 @@ var router = express.Router();
 
 router.get('/', userActions.getUsersC);
 router.get('/objectID/:_id', userActions.getOneUserByObjectIDC);
-router.get('/ID/:ID', userActions.getOneUserByIDC);
+router.get('/gannonID/:gannon_id', userActions.getOneUserByIDC);
 router.post('/', userActions.createUserC);
 router.patch('/objectID/:_id', userActions.updateUserByObjectIDC);
-router.patch('/ID/:ID', userActions.updateUserByIDC);
+router.patch('/gmail/:gmail', userActions.updateUserByGmailC);
 router.delete('/objectID/:_id', userActions.deleteUserByObjectIDC);
-router.delete('/ID/:ID', userActions.deleteUserByIDC);
+router.delete('/gannonID/:gannon_id', userActions.deleteUserByGannonIDC);
+router.get('/exists/:gmail', userActions.checkUserExistsC);
 
 module.exports = router;

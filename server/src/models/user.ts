@@ -1,17 +1,17 @@
 var mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-    email: {
+    gmail: {
         type: String,
         required: true
     },
     userType: {
         type: String,
         required: true,
-        enum: ['student', 'professor']
+        enum: ['student', 'professor', 'not set']
     },
-    id: {
-        type: Number,
+    gannon_id: {
+        type: String,
         required: true
     }
     

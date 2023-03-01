@@ -48,10 +48,10 @@ const createStudentClass = async (query) => {
     }
 }
 
-const updateStudentClassByObjectID = async(id,query) =>{
+const updateStudentClassByObjectID = async(_id,query) =>{
     try {
         await studentClass.findOneAndUpdate({
-            _id: id
+            _id: _id
         },
         {
             student_id: query.student_id,
@@ -72,10 +72,10 @@ const updateStudentClassByObjectID = async(id,query) =>{
     }
 }
 
-const updateStudentClassByStudentID = async(id,query) =>{
+const updateStudentClassByStudentID = async(student_id,query) =>{
     try {
         await studentClass.findOneAndUpdate({
-            student_id: id
+            student_id: student_id
         },
         {
             student_id: query.student_id,

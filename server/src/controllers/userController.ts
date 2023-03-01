@@ -4,7 +4,7 @@ const getUsersC = async(req, res) => {
     try{
         const users = await userService.getUsers({});
 
-        res.header('Access-Control-Allow-Origin', '*');
+       
         res.status(200).json(users);
     } catch(error) {
         res.status(404).json({message: error.message});
@@ -17,7 +17,6 @@ const getOneUserByIDC = async(req, res) => {
     try{
         const aUser = await userService.getOneUserByID(ID);
 
-        res.header('Access-Control-Allow-Origin', '*');
         res.status(200).json(aUser);
     } catch(error) {
         res.status(404).json({message: error.message});
@@ -30,7 +29,6 @@ const getOneuserByObjectIDC = async(req, res) => {
     try{
         const aUser = await userService.getOneUserByObjectID(_id);
 
-        res.header('Access-Control-Allow-Origin', '*');
         res.status(200).json(aUser);
     } catch(error) {
         res.status(404).json({message: error.message});
@@ -40,8 +38,8 @@ const getOneuserByObjectIDC = async(req, res) => {
 const createUserC = async(req, res) => {
     try{
         let newUser = await userService.createUser(req.body);
-
-        res.header('Access-Control-Allow-Origin', '*');
+        
+        
         res.status(201).json(newUser);
     } catch(error) {
         res.status(400).json({message: error.message});
@@ -52,21 +50,19 @@ const updateUserByObjectIDC = async(req, res) => {
     const _id = req.params._id;
     try{
         await userService.updateUserByObjectID(_id, req.body);
-
-        res.header('Access-Control-Allow-Origin', '*');
+        
         res.status(202).json(_id);
     } catch(error) {
         res.status(401).json({message: error.message});
     }
 }
 
-const updateUserByIDC = async(req, res) => {
-    const ID = req.params.ID;
+const updateUserByGmailC = async(req, res) => {
+    const gmail = req.params.gmail;
     try{
-        await userService.updateUserByID(ID, req.body);
-
-        res.header('Access-Control-Allow-Origin', '*');
-        res.status(202).json(ID);
+        await userService.updateUserByGmail(gmail, req.body);
+        
+        res.status(202).json(gmail);
     } catch(error) {
         res.status(401).json({message: error.message});
     }
@@ -76,23 +72,33 @@ const deleteUserByObjectIDC = async(req, res) => {
     const _id = req.params._id;
     try{
         await userService.deleteUserByObjectID(_id, req.body);
-
-        res.header('Access-Control-Allow-Origin', '*');
+        
         res.status(203).json(_id);
     } catch(error) {
         res.status(402).json({message: error.message});
     }
 }
 
-const deleteUserByIDC = async(req, res) => {
-    const ID = req.params.ID;
+const deleteUserByGannonIDC = async(req, res) => {
+    const gannon_id = req.params.gannon_id;
     try{
-        await userService.deleteuserByID(ID, req.body);
-
-        res.header('Access-Control-Allow-Origin', '*');
-        res.status(203).json(ID);
+        await userService.deleteuserByID(gannon_id, req.body);
+        
+        res.status(203).json(gannon_id);
     } catch(error) {
         res.status(402).json({message: error.message});
+    }
+}
+
+const checkUserExistsC = async(req, res) => {
+    const gmail = req.params.gmail;
+
+    try {
+        const exists = await userService.checkUserExists(gmail);
+        
+        res.status(201).json(exists);
+    } catch(error) {
+        res.status(404).json({message: error.message});
     }
 }
 
@@ -101,8 +107,9 @@ module.exports.getOneUserByObjectIDC = getOneuserByObjectIDC;
 module.exports.getOneUserByIDC = getOneUserByIDC;
 module.exports.createUserC = createUserC;
 module.exports.updateUserByObjectIDC = updateUserByObjectIDC;
-module.exports.updateUserByIDC = updateUserByIDC;
+module.exports.updateUserByGmailC = updateUserByGmailC;
 module.exports.deleteUserByObjectIDC = deleteUserByObjectIDC;
-module.exports.deleteUserByIDC = deleteUserByIDC;
+module.exports.deleteUserByGannonIDC = deleteUserByGannonIDC;
+module.exports.checkUserExistsC = checkUserExistsC;
 
 

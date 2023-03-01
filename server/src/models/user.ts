@@ -13,6 +13,14 @@ const userSchema = new mongoose.Schema({
     gannon_id: {
         type: String,
         required: true
+    },
+    authenticated: {
+        type: Boolean,
+        required: true
+    },
+    authenticationCode: {
+        type: Number,
+        required: false
     }
     
 });

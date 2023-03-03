@@ -25,6 +25,14 @@ const getOneUserByGannonID = async (query) => {
     }
 }
 
+const getOneUserByGmail = async (query) => {
+    try {
+        return await user.findOne({gmail: query});
+    } catch(error) {
+        throw Error("Error getting one User");
+    }
+}
+
 const createUser = async (query) => {
     const newUser = new user({
         gmail: query.gmail,
@@ -124,6 +132,7 @@ const generateCode = async(query) => {
 module.exports.getUsers = getUsers;
 module.exports.getOneUserByObjectID = getOneUserByObjectID;
 module.exports.getOneUserByGannonID = getOneUserByGannonID;
+module.exports.getOneUserByGmail = getOneUserByGmail;
 module.exports.createUser = createUser;
 module.exports.updateUserByObjectID = updateUserByObjectID;
 module.exports.updateUserByGmail = updateUserByGmail;

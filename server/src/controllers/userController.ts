@@ -23,6 +23,18 @@ const getOneUserByIDC = async(req, res) => {
     }
 }
 
+const getOneUserByGmailC = async(req, res) => {
+    const gmail = req.params.gmail
+
+    try{
+        const aUser = await userService.getOneUserByGmail(gmail);
+
+        res.status(200).json(aUser);
+    } catch(error) {
+        res.status(404).json({message: error.message});
+    }
+}
+
 const getOneuserByObjectIDC = async(req, res) => {
     const _id = req.params._id
 
@@ -115,6 +127,7 @@ const generateCodeC = async(req, res) => {
 module.exports.getUsersC = getUsersC;
 module.exports.getOneUserByObjectIDC = getOneuserByObjectIDC;
 module.exports.getOneUserByIDC = getOneUserByIDC;
+module.exports.getOneUserByGmailC = getOneUserByGmailC;
 module.exports.createUserC = createUserC;
 module.exports.updateUserByObjectIDC = updateUserByObjectIDC;
 module.exports.updateUserByGmailC = updateUserByGmailC;

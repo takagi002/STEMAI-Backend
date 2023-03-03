@@ -11,4 +11,5 @@ const sendNotificationEmailC = async(req, res) => {
     }
 }
 
+
 module.exports.sendNotificationEmailC = sendNotificationEmailC;

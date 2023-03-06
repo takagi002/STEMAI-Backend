@@ -35,6 +35,27 @@ const sendNotificationEmail = async (query) => {
     });
 }
 
+const sendAuthenticationEmail = async (code, gannon_id) => {
+    let recipient = gannon_id + "@gannon.edu";
+
+    let mailDetails = {
+        from: process.env.EMAIL,
+        to: recipient,
+        subject: 'Authentication Code',
+        text: 'Your Stem AI Authentication Code is:    ' + code + '    \n If you did not request this code your gannon ID may have been entered in error. Please disregard this email.'
+    };
+
+    mailTransporter.sendMail(mailDetails, function(err, data) {
+        if(err) {
+            console.log(err);
+            return("Error: " + err);
+        } else {
+            console.log("Email Sent");
+            return("Email Sent")
+        }
+    });
+}
+
 const sendRecEmail = async (query) => {
     const recipient = query.recipient;
     const classRec = query.classRec;
@@ -59,3 +80,4 @@ const sendRecEmail = async (query) => {
 }
 
 module.exports.sendNotificationEmail = sendNotificationEmail;
+module.exports.sendAuthenticationEmail = sendAuthenticationEmail;

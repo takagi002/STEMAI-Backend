@@ -1,4 +1,5 @@
 let user = require('../models/user.ts');
+var emailService = require('./emailService.ts');
 
 const getUsers = async () => {
     try{
@@ -24,11 +25,20 @@ const getOneUserByGannonID = async (query) => {
     }
 }
 
+const getOneUserByGmail = async (query) => {
+    try {
+        return await user.findOne({gmail: query});
+    } catch(error) {
+        throw Error("Error getting one User");
+    }
+}
+
 const createUser = async (query) => {
     const newUser = new user({
         gmail: query.gmail,
         userType: query.userType,
-        gannon_id: query.gannon_id
+        gannon_id: query.gannon_id,
+        authenticated: false
     });
     try {
         await newUser.save();
@@ -47,7 +57,8 @@ const updateUserByObjectID = async(_id,query) =>{
         {
             gmail: query.gmail,
             userType: query.userType,
-            gannon_id: query.gannon_id
+            gannon_id: query.gannon_id,
+            authenticated: query.authenticated
            
         });
     } catch(error){
@@ -63,7 +74,8 @@ const updateUserByGmail = async(gmail,query) =>{
         {
             gmail: query.gmail,
             userType: query.userType,
-            gannon_id: query.gannon_id
+            gannon_id: query.gannon_id,
+            authenticated: query.authenticated
         });
     } catch(error){
         throw Error("Error updating User");
@@ -100,12 +112,31 @@ const checkUserExists = async(query) => {
     }
 }
 
+const generateCode = async(query) => {
+   var code =  Math.floor(100000 + Math.random() * 900000);
+   try {
+            await user.findOneAndUpdate({gmail: query.gmail},{
+                gmail: query.gmail,
+                userType: query.userType,
+                gannon_id: query.gannon_id,
+                authenticated: query.authenticated,
+                authenticationCode: code
+            })
+        emailService.sendAuthenticationEmail(code, query.gannon_id);
+        return "Code Sent and Generated";
+   } catch(error) {
+        throw Error("Error generating code: " + error)
+   }
+}
+
 module.exports.getUsers = getUsers;
 module.exports.getOneUserByObjectID = getOneUserByObjectID;
 module.exports.getOneUserByGannonID = getOneUserByGannonID;
+module.exports.getOneUserByGmail = getOneUserByGmail;
 module.exports.createUser = createUser;
 module.exports.updateUserByObjectID = updateUserByObjectID;
 module.exports.updateUserByGmail = updateUserByGmail;
 module.exports.deleteUserByObjectID = deleteUserByObjectID;
 module.exports.deleteUserByGannonID = deleteUserByGannonID;
 module.exports.checkUserExists = checkUserExists;
+module.exports.generateCode = generateCode;

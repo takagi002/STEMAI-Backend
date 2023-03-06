@@ -1,4 +1,4 @@
-const emailService = require('../services/emailService.ts');
+var emailService = require('../services/emailService.ts');
 
 const sendNotificationEmailC = async(req, res) => {
     try{
@@ -10,5 +10,6 @@ const sendNotificationEmailC = async(req, res) => {
         res.status(404).json({message: error.message});
     }
 }
+
 
 module.exports.sendNotificationEmailC = sendNotificationEmailC;

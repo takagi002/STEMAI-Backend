@@ -129,6 +129,15 @@ const generateCode = async(query) => {
    }
 }
 
+const checkUserAuthenticated = async(query) => {
+    try {
+        var authUser = await user.findOne({gmail: query})
+        return authUser.authenticated;
+    } catch(error) {
+        throw Error("Error checking if user exists " + error)
+    }
+}
+
 module.exports.getUsers = getUsers;
 module.exports.getOneUserByObjectID = getOneUserByObjectID;
 module.exports.getOneUserByGannonID = getOneUserByGannonID;
@@ -140,3 +149,4 @@ module.exports.deleteUserByObjectID = deleteUserByObjectID;
 module.exports.deleteUserByGannonID = deleteUserByGannonID;
 module.exports.checkUserExists = checkUserExists;
 module.exports.generateCode = generateCode;
+module.exports.checkUserAuthenticated = checkUserAuthenticated;

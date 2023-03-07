@@ -124,6 +124,18 @@ const generateCodeC = async(req, res) => {
     }
 }
 
+const checkUserAuthenticatedC = async(req, res) => {
+    const gmail = req.params.gmail;
+
+    try {
+        const auth = await userService.checkUserAuthenticated(gmail);
+        
+        res.status(201).json(auth);
+    } catch(error) {
+        res.status(404).json({message: error.message});
+    }
+}
+
 module.exports.getUsersC = getUsersC;
 module.exports.getOneUserByObjectIDC = getOneuserByObjectIDC;
 module.exports.getOneUserByIDC = getOneUserByIDC;
@@ -135,5 +147,6 @@ module.exports.deleteUserByObjectIDC = deleteUserByObjectIDC;
 module.exports.deleteUserByGannonIDC = deleteUserByGannonIDC;
 module.exports.checkUserExistsC = checkUserExistsC;
 module.exports.generateCodeC = generateCodeC;
+module.exports.checkUserAuthenticatedC = checkUserAuthenticatedC;
 
 

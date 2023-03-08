@@ -138,6 +138,18 @@ const checkUserAuthenticated = async(query) => {
     }
 }
 
+const checkIfGannonIDExists = async(query) => {
+    try {
+        if(await user.countDocuments({gannon_id: query}) == 0){
+            return false;
+        } else {
+            return true;
+        }
+    }catch(error) {
+        throw Error("Error Checking if Gannon ID exists " + error)
+    }
+}
+
 module.exports.getUsers = getUsers;
 module.exports.getOneUserByObjectID = getOneUserByObjectID;
 module.exports.getOneUserByGannonID = getOneUserByGannonID;
@@ -150,3 +162,4 @@ module.exports.deleteUserByGannonID = deleteUserByGannonID;
 module.exports.checkUserExists = checkUserExists;
 module.exports.generateCode = generateCode;
 module.exports.checkUserAuthenticated = checkUserAuthenticated;
+module.exports.checkIfGannonIDExists = checkIfGannonIDExists;

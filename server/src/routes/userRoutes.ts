@@ -14,6 +14,7 @@ router.delete('/gannonID/:gannon_id', userActions.deleteUserByGannonIDC);
 router.get('/exists/:gmail', userActions.checkUserExistsC);
 router.post('/generateCode', userActions.generateCodeC);
 router.get('/authenticated/:gmail', userActions.checkUserAuthenticatedC);
+router.get('/existsGannonID/:gannon_id', userActions.checkIfGannonIDExistsC);
 
 
 module.exports = router;

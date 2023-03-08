@@ -136,6 +136,18 @@ const checkUserAuthenticatedC = async(req, res) => {
     }
 }
 
+const checkIfGannonIDExistsC = async(req, res) => {
+    const gannon_id = req.params.gannon_id;
+
+    try {
+        const exists = await userService.checkIfGannonIDExists(gannon_id);
+        
+        res.status(201).json(exists);
+    } catch(error) {
+        res.status(404).json({message: error.message});
+    }
+}
+
 module.exports.getUsersC = getUsersC;
 module.exports.getOneUserByObjectIDC = getOneuserByObjectIDC;
 module.exports.getOneUserByIDC = getOneUserByIDC;
@@ -148,5 +160,6 @@ module.exports.deleteUserByGannonIDC = deleteUserByGannonIDC;
 module.exports.checkUserExistsC = checkUserExistsC;
 module.exports.generateCodeC = generateCodeC;
 module.exports.checkUserAuthenticatedC = checkUserAuthenticatedC;
+module.exports.checkIfGannonIDExistsC = checkIfGannonIDExistsC;
 
 

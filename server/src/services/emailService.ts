@@ -56,16 +56,23 @@ const sendAuthenticationEmail = async (code, gannon_id) => {
     });
 }
 
+//assuming it sends predictions objects over
 const sendRecEmail = async (query) => {
     const recipient = query.recipient;
     const classRec = query.classRec;
+    var predictionString = "";
+
+    classRec.forEach(function (prediction) {
+        predictionString = predictionString + "\n" + prediction.course_id + ": " + prediction.prediction + "\n    Reason: " + prediction.reason;
+      });
 
     let mailDetails = {
         from: process.env.EMAIL,
         to: recipient,
         subject: 'Tutoring Recommendation',
-        text: 'We believe that you would benefit from tutoring for ' + classRec + ' due to previous students experience in this course.' +
-        'REMINDER: This is just a recommendation based on past students data. We are not calling you dumb'
+        text: 'We believe that you would benefit from tutoring for the below classes due to previous students experience in this course.' + predictionString +
+        '\n\n    REMINDER: This is just a recommendation based on past students data and our AI model' + 
+        '\n\n    To see more go to StemAI.com'
     };
 
     mailTransporter.sendMail(mailDetails, function(err, data) {
@@ -81,3 +88,4 @@ const sendRecEmail = async (query) => {
 
 module.exports.sendNotificationEmail = sendNotificationEmail;
 module.exports.sendAuthenticationEmail = sendAuthenticationEmail;
+module.exports.sendRecEmail = sendRecEmail;

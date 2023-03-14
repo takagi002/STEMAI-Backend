@@ -14,6 +14,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    idNumber:{
+        type: Number,
+        required: true
+    },
     authenticated: {
         type: Boolean,
         required: true

@@ -30,7 +30,8 @@ const createClass = async (query) => {
         department: query.department,
         perc_retaken: query.perc_retaken,
         classroom: query.classroom,
-        date_time: query.date_time
+        date_time: query.date_time,
+        course_name: query.course_name
     });
     try {
         await newClass.save();
@@ -51,7 +52,9 @@ const updateClassByObjectID = async(_id,query) =>{
             department: query.department,
             perc_retaken: query.perc_retaken,
             classroom: query.classroom,
-            date_time: query.date_time
+            date_time: query.date_time,
+            course_name: query.course_name
+
         });
     } catch(error){
         throw Error("Error updating class");
@@ -68,7 +71,9 @@ const updateClassByCourseID = async(course_id,query) =>{
             department: query.department,
             perc_retaken: query.perc_retaken,
             classroom: query.classroom,
-            date_time: query.date_time
+            date_time: query.date_time,
+            course_name: query.course_name
+
         });
     } catch(error){
         throw Error("Error updating class");

@@ -37,6 +37,18 @@ const getOnePredictionByObjectIDC = async(req, res) => {
     }
 }
 
+const getPredictionsFromStudentIDC = async(req, res) => {
+    const student_id = req.params.student_id;
+
+    try{
+        const studentPredictions = await predictionService.getPredictionsFromStudentID(student_id);
+
+        res.status(200).json(studentPredictions);
+    }catch(error){
+        res.status(404).json({message: error.message});
+    }
+}
+
 const createPredictionC = async(req, res) => {
     try{
         let newPrediction = await predictionService.createPrediction(req.body);
@@ -104,5 +116,6 @@ module.exports.updatePredictionByObjectIDC = updatePredictionByObjectIDC;
 module.exports.updatePredictionByCourseIDC = updatePredictionByCourseIDC;
 module.exports.deletePredictionByObjectIDC = deletePredictionByObjectIDC;
 module.exports.deletePredictionByCourseIDC = deletePredictionByCourseIDC;
+module.exports.getPredictionsFromStudentIDC = getPredictionsFromStudentIDC;
 
 

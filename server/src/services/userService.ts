@@ -38,6 +38,7 @@ const createUser = async (query) => {
         gmail: query.gmail,
         userType: query.userType,
         gannon_id: query.gannon_id,
+        idNumber: query.idNumber,
         authenticated: false
     });
     try {
@@ -58,6 +59,7 @@ const updateUserByObjectID = async(_id,query) =>{
             gmail: query.gmail,
             userType: query.userType,
             gannon_id: query.gannon_id,
+            idNumber: query.idNumber,
             authenticated: query.authenticated
            
         });
@@ -75,6 +77,7 @@ const updateUserByGmail = async(gmail,query) =>{
             gmail: query.gmail,
             userType: query.userType,
             gannon_id: query.gannon_id,
+            idNumber: query.idNumber,
             authenticated: query.authenticated
         });
     } catch(error){
@@ -119,6 +122,7 @@ const generateCode = async(query) => {
                 gmail: query.gmail,
                 userType: query.userType,
                 gannon_id: query.gannon_id,
+                idNumber: query.idNumber,
                 authenticated: query.authenticated,
                 authenticationCode: code
             })

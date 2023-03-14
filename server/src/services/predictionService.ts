@@ -24,6 +24,14 @@ const getOnePredictionByStudentID = async (query) => {
     }
 }
 
+const getPredictionsFromStudentID = async (query) => {
+    try {
+        return await predictionModel.find({student_id: query});
+    } catch(error) {
+        throw Error("Error getting one Prediction");
+    }
+}
+
 const createPrediction = async (query) => {
     const newPrediction = new predictionModel({
         student_id: query.student_id,
@@ -96,3 +104,4 @@ module.exports.updatePredictionByObjectID = updatePredictionByObjectID;
 module.exports.updatePredictionByStudentID = updatePredictionByStudentID;
 module.exports.deletePredictionByObjectID = deletePredictionByObjectID;
 module.exports.deletePredictionByStudentID = deletePredictionByStudentID;
+module.exports.getPredictionsFromStudentID = getPredictionsFromStudentID;

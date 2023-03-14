@@ -20,6 +20,10 @@ const classSchema = new mongoose.Schema({
     date_time: {
         type: String,
         required: true
+    }, 
+    course_name: {
+        type: String,
+        required: true
     }
 });
 

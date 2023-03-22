@@ -11,6 +11,7 @@ router.patch('/objectID/:_id', userActions.updateUserByObjectIDC);
 router.patch('/gmail/:gmail', userActions.updateUserByGmailC);
 router.delete('/objectID/:_id', userActions.deleteUserByObjectIDC);
 router.delete('/gannonID/:gannon_id', userActions.deleteUserByGannonIDC);
+router.delete('/gmail/:gmail', userActions.deleteUserByGmailC);
 router.get('/exists/:gmail', userActions.checkUserExistsC);
 router.post('/generateCode', userActions.generateCodeC);
 router.get('/authenticated/:gmail', userActions.checkUserAuthenticatedC);

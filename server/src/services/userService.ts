@@ -110,6 +110,14 @@ const deleteUserByGannonID = async(query) => {
     }
 }
 
+const deleteUserByGmail = async(query) => {
+    try {
+        await user.findOneAndRemove({gmail: query});
+    } catch(error) {
+        throw Error("Error deleting User");
+    }
+}
+
 const checkUserExists = async(query) => {
     try {
         if(await user.countDocuments({gmail: query}) == 0){
@@ -192,6 +200,7 @@ module.exports.updateUserByObjectID = updateUserByObjectID;
 module.exports.updateUserByGmail = updateUserByGmail;
 module.exports.deleteUserByObjectID = deleteUserByObjectID;
 module.exports.deleteUserByGannonID = deleteUserByGannonID;
+module.exports.deleteUserByGmail = deleteUserByGmail;
 module.exports.checkUserExists = checkUserExists;
 module.exports.generateCode = generateCode;
 module.exports.checkUserAuthenticated = checkUserAuthenticated;

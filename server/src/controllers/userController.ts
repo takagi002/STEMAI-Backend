@@ -94,9 +94,20 @@ const deleteUserByObjectIDC = async(req, res) => {
 const deleteUserByGannonIDC = async(req, res) => {
     const gannon_id = req.params.gannon_id;
     try{
-        await userService.deleteuserByID(gannon_id, req.body);
+        await userService.deleteUserByGannonID(gannon_id, req.body);
         
         res.status(203).json(gannon_id);
+    } catch(error) {
+        res.status(402).json({message: error.message});
+    }
+}
+
+const deleteUserByGmailC = async(req, res) => {
+    const gmail = req.params.gmail;
+    try{
+        await userService.deleteUserByGmail(gmail);
+        
+        res.status(203).json(gmail);
     } catch(error) {
         res.status(402).json({message: error.message});
     }
@@ -167,6 +178,7 @@ module.exports.updateUserByObjectIDC = updateUserByObjectIDC;
 module.exports.updateUserByGmailC = updateUserByGmailC;
 module.exports.deleteUserByObjectIDC = deleteUserByObjectIDC;
 module.exports.deleteUserByGannonIDC = deleteUserByGannonIDC;
+module.exports.deleteUserByGmailC = deleteUserByGmailC;
 module.exports.checkUserExistsC = checkUserExistsC;
 module.exports.generateCodeC = generateCodeC;
 module.exports.checkUserAuthenticatedC = checkUserAuthenticatedC;

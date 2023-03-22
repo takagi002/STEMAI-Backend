@@ -39,7 +39,8 @@ const createUser = async (query) => {
         userType: query.userType,
         gannon_id: query.gannon_id,
         idNumber: query.idNumber,
-        authenticated: false
+        authenticated: false,
+        notifications: false
     });
     try {
         await newUser.save();
@@ -60,7 +61,8 @@ const updateUserByObjectID = async(_id,query) =>{
             userType: query.userType,
             gannon_id: query.gannon_id,
             idNumber: query.idNumber,
-            authenticated: query.authenticated
+            authenticated: query.authenticated,
+            notifications: query.notifications
            
         });
     } catch(error){
@@ -78,8 +80,13 @@ const updateUserByGmail = async(gmail,query) =>{
             userType: query.userType,
             gannon_id: query.gannon_id,
             idNumber: query.idNumber,
-            authenticated: query.authenticated
+            authenticated: query.authenticated,
+            notifications: query.notifications
+
         });
+        if(query.authenticated){
+            emailService.sendInitialNotificationEmail(query.gannon_id);
+        }
     } catch(error){
         throw Error("Error updating User");
     }
@@ -124,7 +131,9 @@ const generateCode = async(query) => {
                 gannon_id: query.gannon_id,
                 idNumber: query.idNumber,
                 authenticated: query.authenticated,
-                authenticationCode: code
+                authenticationCode: code,
+                notifications: query.notifications
+
             })
         emailService.sendAuthenticationEmail(code, query.gannon_id);
         return "Code Sent and Generated";
@@ -154,6 +163,26 @@ const checkIfGannonIDExists = async(query) => {
     }
 }
 
+const changeNotificationPreference = async(query) => {
+    try {
+        await user.findOneAndUpdate({gmail: query.gmail},{
+            gmail: query.gmail,
+            userType: query.userType,
+            gannon_id: query.gannon_id,
+            idNumber: query.idNumber,
+            authenticated: query.authenticated,
+            authenticationCode: query.code,
+            notifications: query.notifications
+        })
+        if(query.notifications){
+            emailService.sendNotificationEmail(query.gannon_id);
+        }
+        
+    }catch(error) {
+        throw Error("Error Checking if Gannon ID exists " + error)
+    }
+}
+
 module.exports.getUsers = getUsers;
 module.exports.getOneUserByObjectID = getOneUserByObjectID;
 module.exports.getOneUserByGannonID = getOneUserByGannonID;
@@ -167,3 +196,4 @@ module.exports.checkUserExists = checkUserExists;
 module.exports.generateCode = generateCode;
 module.exports.checkUserAuthenticated = checkUserAuthenticated;
 module.exports.checkIfGannonIDExists = checkIfGannonIDExists;
+module.exports.changeNotificationPreference = changeNotificationPreference;

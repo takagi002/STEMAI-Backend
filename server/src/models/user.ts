@@ -25,6 +25,10 @@ const userSchema = new mongoose.Schema({
     authenticationCode: {
         type: Number,
         required: false
+    },
+    notifications: {
+        type: Boolean,
+        required: true
     }
     
 });

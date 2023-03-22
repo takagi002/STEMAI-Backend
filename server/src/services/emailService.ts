@@ -13,15 +13,35 @@ let mailTransporter = nodemailer.createTransport({
  
 
  
-const sendNotificationEmail = async (query) => {
-    const recipient = query.recipient;
-
+const sendNotificationEmail = async (gannon_id) => {
+    let recipient = gannon_id + "@gannon.edu";
     let mailDetails = {
         from: process.env.EMAIL,
         to: recipient,
         subject: 'You Will Now Receive Notifications from StemAI',
-        text: 'You have signed up to receive notification from StemAI. You will receive tutoring reccomendation every quarter of the semester.'
-        + ' If you would like to stop receiving emails from StemAI please return to the StemAI webpage and go to settings and deselect RECEIVE NOTIFICATIONS.'
+        text: 'You have signed up to receive notification from StemAI. You will receive tutoring recommendation every quarter of the semester.'
+        + ' \n\nIf you would like to stop receiving emails from StemAI please return to the StemAI webpage and go to settings and deselect RECEIVE NOTIFICATIONS.'
+    };
+
+    mailTransporter.sendMail(mailDetails, function(err, data) {
+        if(err) {
+            console.log(err);
+            return("Error: " + err);
+        } else {
+            console.log("Email Sent");
+            return("Email Sent")
+        }
+    });
+}
+
+const sendInitialNotificationEmail = async (gannon_id) => {
+    let recipient = gannon_id + "@gannon.edu";
+    let mailDetails = {
+        from: process.env.EMAIL,
+        to: recipient,
+        subject: 'Thank you for signing up for StemAI',
+        text: 'Thank you for signing up for StemAI. We are excited to have you! In addition to being able to view your recommendations on the StemAI page you will also receive emails every quarter semester with update recommendations.'
+        + ' \n\nIf you would like to stop receiving emails from StemAI please return to the StemAI webpage and go to settings and deselect RECEIVE NOTIFICATIONS.'
     };
 
     mailTransporter.sendMail(mailDetails, function(err, data) {
@@ -87,5 +107,6 @@ const sendRecEmail = async (query) => {
 }
 
 module.exports.sendNotificationEmail = sendNotificationEmail;
+module.exports.sendInitialNotificationEmail = sendInitialNotificationEmail;
 module.exports.sendAuthenticationEmail = sendAuthenticationEmail;
 module.exports.sendRecEmail = sendRecEmail;

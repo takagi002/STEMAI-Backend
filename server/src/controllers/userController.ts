@@ -148,6 +148,16 @@ const checkIfGannonIDExistsC = async(req, res) => {
     }
 }
 
+const changeNotificationPreferenceC = async(req, res) => {
+    try {
+        await userService.changeNotificationPreference(req.body);
+        
+        res.status(201).json("yeah pog");
+    } catch(error) {
+        res.status(404).json({message: error.message});
+    }
+}
+
 module.exports.getUsersC = getUsersC;
 module.exports.getOneUserByObjectIDC = getOneuserByObjectIDC;
 module.exports.getOneUserByIDC = getOneUserByIDC;
@@ -161,5 +171,5 @@ module.exports.checkUserExistsC = checkUserExistsC;
 module.exports.generateCodeC = generateCodeC;
 module.exports.checkUserAuthenticatedC = checkUserAuthenticatedC;
 module.exports.checkIfGannonIDExistsC = checkIfGannonIDExistsC;
-
+module.exports.changeNotificationPreferenceC = changeNotificationPreferenceC;
 

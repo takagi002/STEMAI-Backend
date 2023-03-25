@@ -13,4 +13,18 @@ const getProfessorsClassesC = async(req, res) => {
     }
 }
 
+const getProfessorsStudentsC = async(req, res) => {
+    const course_id = req.params.course_id
+
+    try{
+        const students = await professorClassesService.getProfessorsStudents(course_id);
+
+        res.header('Access-Control-Allow-Origin', '*');
+        res.status(200).json(students);
+    } catch(error) {
+        res.status(404).json({message: error.message});
+    }
+}
+
 module.exports.getProfessorsClassesC = getProfessorsClassesC;
+module.exports.getProfessorsStudentsC = getProfessorsStudentsC;

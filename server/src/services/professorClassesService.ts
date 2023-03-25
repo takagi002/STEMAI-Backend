@@ -37,9 +37,12 @@ const getAssociatedClasses = (studentClasses,classes) => {
             } 
        });
     })
-    
-   console.log("Results = " + results.length);
    return results;
 }
 
+const getProfessorsStudents = async(query) =>{
+    return await studentClass1.find({course_id: query});
+}
+
 module.exports.getProfessorsClasses = getProfessorsClasses;
+module.exports.getProfessorsStudents = getProfessorsStudents;

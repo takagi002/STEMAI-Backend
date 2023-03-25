@@ -35,6 +35,9 @@ app.use('/user', userRoutes);
 const predictionRoutes = require('../server/src/routes/predictionRoutes.ts');
 app.use('/prediction', predictionRoutes);
 
+const professorClassRoutes = require('../server/src/routes/professorClassRoutes.ts');
+app.use('/professorClass', professorClassRoutes);
+
 const server = app.listen(PORT, () => {
   console.log("Server is running at port " + PORT);
 });

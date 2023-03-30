@@ -16,6 +16,10 @@ const predictionSchema = new mongoose.Schema({
     reason: {
         type: String,
         required: true
+    },
+    semester: {
+        type: String,
+        required: true
     }
 });
 

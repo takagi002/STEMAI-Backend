@@ -39,9 +39,10 @@ const getOnePredictionByObjectIDC = async(req, res) => {
 
 const getPredictionsFromStudentIDC = async(req, res) => {
     const student_id = req.params.student_id;
+    const currentSemester = req.params.current_semester;
 
     try{
-        const studentPredictions = await predictionService.getPredictionsFromStudentID(student_id);
+        const studentPredictions = await predictionService.getPredictionsFromStudentID(student_id, currentSemester);
 
         res.status(200).json(studentPredictions);
     }catch(error){

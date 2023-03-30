@@ -10,6 +10,6 @@ router.patch('/objectID/:_id', predictionActions.updatePredictionByObjectIDC);
 router.patch('/studentID/:student_id', predictionActions.updatePredictionByCourseIDC);
 router.delete('/objectID/:_id', predictionActions.deletePredictionByObjectIDC);
 router.delete('/studentID/:student_id', predictionActions.deletePredictionByCourseIDC);
-router.get('/studentIDALL/:student_id', predictionActions.getPredictionsFromStudentIDC);
+router.get('/studentIDALL/:student_id/:current_semester', predictionActions.getPredictionsFromStudentIDC);
 
 module.exports = router;

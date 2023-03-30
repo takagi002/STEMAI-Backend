@@ -40,7 +40,7 @@ const sendInitialNotificationEmail = async (gannon_id) => {
         from: process.env.EMAIL,
         to: recipient,
         subject: 'Thank you for signing up for StemAI',
-        text: 'Thank you for signing up for StemAI. We are excited to have you! In addition to being able to view your recommendations on the StemAI page you will also receive emails every quarter semester with update recommendations.'
+        text: 'Thank you for signing up for StemAI. We are excited to have you! In addition to being able to view your recommendations on the StemAI page you will also receive emails every quarter semester with reminders.'
         + ' \n\nIf you would like to stop receiving emails from StemAI please return to the StemAI webpage and go to settings and deselect RECEIVE NOTIFICATIONS.'
     };
 
@@ -80,6 +80,7 @@ const sendAuthenticationEmail = async (code, gannon_id) => {
 const sendRecEmail = async (query) => {
     const recipient = query.recipient;
     const classRec = query.classRec;
+    const professor = query.professor;
     var predictionString = "";
 
     classRec.forEach(function (prediction) {
@@ -90,9 +91,9 @@ const sendRecEmail = async (query) => {
         from: process.env.EMAIL,
         to: recipient,
         subject: 'Tutoring Recommendation',
-        text: 'We believe that you would benefit from tutoring for the below classes due to previous students experience in this course.' + predictionString +
+        text: 'Your professor, ' + professor + ', believes that you would benefit from tutoring for the below classes due to previous students experience in this course.' + predictionString +
         '\n\n    REMINDER: This is just a recommendation based on past students data and our AI model' + 
-        '\n\n    To see more go to StemAI.com'
+        '\n\n    To see more go to the StemAI page'
     };
 
     mailTransporter.sendMail(mailDetails, function(err, data) {

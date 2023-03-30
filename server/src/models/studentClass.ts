@@ -6,7 +6,7 @@ const studentClassSchema = new mongoose.Schema({
         required: true
     },
     course_id: {
-        type: Number,
+        type: String,
         required: true
     },
     semester: {
@@ -38,7 +38,7 @@ const studentClassSchema = new mongoose.Schema({
         required: true
     },
     prof_id: {
-        type: Number,
+        type: String,
         required: true
     },
     taken_before: {

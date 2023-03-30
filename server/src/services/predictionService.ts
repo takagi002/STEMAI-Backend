@@ -24,11 +24,12 @@ const getOnePredictionByStudentID = async (query) => {
     }
 }
 
-const getPredictionsFromStudentID = async (query) => {
+const getPredictionsFromStudentID = async (student_id, currentSemester) => {
+    console.log(currentSemester)
     try {
-        return await predictionModel.find({student_id: query});
+        return await predictionModel.find({student_id: student_id, semester: currentSemester});
     } catch(error) {
-        throw Error("Error getting one Prediction");
+        throw Error("Error getting one Prediction " + error);
     }
 }
 
@@ -37,7 +38,8 @@ const createPrediction = async (query) => {
         student_id: query.student_id,
         course_id: query.course_id,
         prediction: query.prediction,
-        reason: query.reason
+        reason: query.reason,
+        semester: query.semester
     });
     try {
         await newPrediction.save();
@@ -57,7 +59,8 @@ const updatePredictionByObjectID = async(_id,query) =>{
             student_id: query.student_id,
             course_id: query.course_id,
             prediction: query.prediction,
-            reason: query.reason
+            reason: query.reason,
+            semester: query.semester
         });
     } catch(error){
         throw Error("Error updating prediction");
@@ -73,7 +76,8 @@ const updatePredictionByStudentID = async(student_id,query) =>{
             student_id: query.student_id,
             course_id: query.course_id,
             prediction: query.prediction,
-            reason: query.reason
+            reason: query.reason,
+            semester: query.semester
         });
     } catch(error){
         throw Error("Error updating prediction");

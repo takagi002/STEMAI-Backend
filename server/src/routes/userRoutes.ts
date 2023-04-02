@@ -17,6 +17,7 @@ router.post('/generateCode', userActions.generateCodeC);
 router.get('/authenticated/:gmail', userActions.checkUserAuthenticatedC);
 router.get('/existsGannonID/:gannon_id', userActions.checkIfGannonIDExistsC);
 router.post('/notification', userActions.changeNotificationPreferenceC);
+router.get('/signedUp/:idNumber', userActions.checkUserSignedUpC);
 
 
 module.exports = router;

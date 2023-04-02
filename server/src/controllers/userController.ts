@@ -169,6 +169,18 @@ const changeNotificationPreferenceC = async(req, res) => {
     }
 }
 
+const checkUserSignedUpC = async(req, res) => {
+    const idNumber = req.params.idNumber;
+
+    try {
+        const signed = await userService.checkUserSignedUp(idNumber);
+        
+        res.status(201).json(signed);
+    } catch(error) {
+        res.status(404).json({message: error.message});
+    }
+}
+
 module.exports.getUsersC = getUsersC;
 module.exports.getOneUserByObjectIDC = getOneuserByObjectIDC;
 module.exports.getOneUserByIDC = getOneUserByIDC;
@@ -184,4 +196,5 @@ module.exports.generateCodeC = generateCodeC;
 module.exports.checkUserAuthenticatedC = checkUserAuthenticatedC;
 module.exports.checkIfGannonIDExistsC = checkIfGannonIDExistsC;
 module.exports.changeNotificationPreferenceC = changeNotificationPreferenceC;
+module.exports.checkUserSignedUpC = checkUserSignedUpC;
 

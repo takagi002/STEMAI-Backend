@@ -191,6 +191,18 @@ const changeNotificationPreference = async(query) => {
     }
 }
 
+const checkUserSignedUp = async(query) =>{
+    try{
+        if(await user.countDocuments({idNumber: query}) == 0){
+            return false;
+        } else {
+            return user.findOne({idNumber: query});
+        }
+    }catch(error) {
+        throw Error("Error checking if user signed up " + error)
+    }
+}
+
 module.exports.getUsers = getUsers;
 module.exports.getOneUserByObjectID = getOneUserByObjectID;
 module.exports.getOneUserByGannonID = getOneUserByGannonID;
@@ -206,3 +218,4 @@ module.exports.generateCode = generateCode;
 module.exports.checkUserAuthenticated = checkUserAuthenticated;
 module.exports.checkIfGannonIDExists = checkIfGannonIDExists;
 module.exports.changeNotificationPreference = changeNotificationPreference;
+module.exports.checkUserSignedUp = checkUserSignedUp;

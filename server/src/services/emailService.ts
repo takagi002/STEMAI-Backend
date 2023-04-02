@@ -76,22 +76,20 @@ const sendAuthenticationEmail = async (code, gannon_id) => {
     });
 }
 
+
 //assuming it sends predictions objects over
 const sendRecEmail = async (query) => {
     const recipient = query.recipient;
-    const classRec = query.classRec;
+    const courseName = query.courseName;
     const professor = query.professor;
-    var predictionString = "";
 
-    classRec.forEach(function (prediction) {
-        predictionString = predictionString + "\n" + prediction.course_id + ": " + prediction.prediction + "\n    Reason: " + prediction.reason;
-      });
+      
 
     let mailDetails = {
         from: process.env.EMAIL,
         to: recipient,
         subject: 'Tutoring Recommendation',
-        text: 'Your professor, ' + professor + ', believes that you would benefit from tutoring for the below classes due to previous students experience in this course.' + predictionString +
+        text: 'Your professor, ' + professor + ', believes that you would benefit from tutoring for ' + courseName + ' due to previous students experience in this course.' +
         '\n\n    REMINDER: This is just a recommendation based on past students data and our AI model' + 
         '\n\n    To see more go to the StemAI page'
     };

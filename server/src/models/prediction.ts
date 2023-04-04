@@ -13,10 +13,10 @@ const predictionSchema = new mongoose.Schema({
         type: Boolean,
         required: true
     },
-    reason: {
+    reason: [{
         type: String,
         required: true
-    },
+    }],
     semester: {
         type: String,
         required: true

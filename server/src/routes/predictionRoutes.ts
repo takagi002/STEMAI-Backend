@@ -11,5 +11,6 @@ router.patch('/studentID/:student_id', predictionActions.updatePredictionByCours
 router.delete('/objectID/:_id', predictionActions.deletePredictionByObjectIDC);
 router.delete('/studentID/:student_id', predictionActions.deletePredictionByCourseIDC);
 router.get('/studentIDALL/:student_id/:current_semester', predictionActions.getPredictionsFromStudentIDC);
+router.get('/studentInClass/:student_id/:currentSemester/:course_id', predictionActions.getPredictionForStudentInClassC);
 
 module.exports = router;

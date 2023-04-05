@@ -1,42 +1,43 @@
 var mongoose = require('mongoose');
 
 const studentSchema = new mongoose.Schema({
-    student_ID: {
+    student_id: {
         type: Number,
         required: true
     },
-    current_Period: {
-        type: Number,
-        required: true,
-    },
-    is_Athlete: {
-        type: Boolean,
+    grad_class: {
+        type: String,
         required: true
     },
-    is_Work_Study: {
-        type: Boolean,
+    majors: {
+        type: String,
         required: true
     },
-    is_Full_Time: {
-        type: Boolean,
+    gpa: {
+        type: Number, 
         required: true
     },
-    major_Group: {
-        type: Number,
-        required: true,
-    }, 
-    completed_Credits: {
+    completed_credits: {
         type: Number,
         required: true
     },
-    attending_Tutoring: {
+    distance_from_stem: {
+        type: Number,
+        required: true
+    },
+    is_work_study: {
         type: Boolean,
         required: true
     },
-    stem_Grade_Score: {
+    is_athlete: {
+        type: Boolean,
+        required: true
+    },
+    num_courses_taking: {
         type: Number,
         required: true
     }
+    
 });
 
 module.exports = mongoose.model("Student", studentSchema);

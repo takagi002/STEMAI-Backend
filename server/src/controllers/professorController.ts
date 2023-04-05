@@ -12,10 +12,10 @@ const getProfessersC = async(req, res) => {
 }
 
 const getOneProfesserByProfessorIDC = async(req, res) => {
-    const professor_ID = req.params.professor_ID
+    const prof_id = req.params.prof_id
 
     try{
-        const professer = await professerService.getOneProfesserByProfessorID(professor_ID);
+        const professer = await professerService.getOneProfesserByProfessorID(prof_id);
 
         res.header('Access-Control-Allow-Origin', '*');
         res.status(200).json(professer);
@@ -61,12 +61,12 @@ const updateProfesserByObjectIDC = async(req, res) => {
 }
 
 const updateProfesserByProfessorIDC = async(req, res) => {
-    const professor_ID = req.params.professor_ID;
+    const prof_id = req.params.prof_id;
     try{
-        await professerService.updateProfesserByProfessorID(professor_ID, req.body);
+        await professerService.updateProfesserByProfessorID(prof_id, req.body);
 
         res.header('Access-Control-Allow-Origin', '*');
-        res.status(202).json(professor_ID);
+        res.status(202).json(prof_id);
     } catch(error) {
         res.status(401).json({message: error.message});
     }
@@ -85,12 +85,12 @@ const deleteProfesserByObjectIDC = async(req, res) => {
 }
 
 const deleteProfesserByProfessorIDC = async(req, res) => {
-    const professor_ID = req.params.professor_ID;
+    const prof_id = req.params.prof_id;
     try{
-        await professerService.deleteProfesserByProfessorID(professor_ID, req.body);
+        await professerService.deleteProfesserByProfessorID(prof_id, req.body);
 
         res.header('Access-Control-Allow-Origin', '*');
-        res.status(203).json(professor_ID);
+        res.status(203).json(prof_id);
     } catch(error) {
         res.status(402).json({message: error.message});
     }

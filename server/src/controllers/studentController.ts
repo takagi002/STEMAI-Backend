@@ -12,10 +12,10 @@ const getStudentsC = async(req, res) => {
 }
 
 const getOneStudentByStudentIDC = async(req, res) => {
-    const student_ID = req.params.student_ID
+    const student_id = req.params.student_id
 
     try{
-        const student = await studentService.getOneStudentByStudentID(student_ID);
+        const student = await studentService.getOneStudentByStudentID(student_id);
 
         res.header('Access-Control-Allow-Origin', '*');
         res.status(200).json(student);
@@ -61,12 +61,12 @@ const updateStudentByObjectIDC = async(req, res) => {
 }
 
 const updateStudentByStudentIDC = async(req, res) => {
-    const student_ID = req.params.student_ID;
+    const student_id = req.params.student_id;
     try{
-        await studentService.updateStudentByStudentID(student_ID, req.body);
+        await studentService.updateStudentByStudentID(student_id, req.body);
 
         res.header('Access-Control-Allow-Origin', '*');
-        res.status(202).json(student_ID);
+        res.status(202).json(student_id);
     } catch(error) {
         res.status(401).json({message: error.message});
     }
@@ -85,12 +85,12 @@ const deleteStudentByObjectIDC = async(req, res) => {
 }
 
 const deleteStudentByStudentIDC = async(req, res) => {
-    const student_ID = req.params.student_ID;
+    const student_id = req.params.student_id;
     try{
-        await studentService.deleteStudentByStudentID(student_ID, req.body);
+        await studentService.deleteStudentByStudentID(student_id, req.body);
 
         res.header('Access-Control-Allow-Origin', '*');
-        res.status(203).json(student_ID);
+        res.status(203).json(student_id);
     } catch(error) {
         res.status(402).json({message: error.message});
     }

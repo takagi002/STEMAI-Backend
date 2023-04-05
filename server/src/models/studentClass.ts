@@ -1,22 +1,55 @@
 var mongoose = require('mongoose');
 
 const studentClassSchema = new mongoose.Schema({
-    student_ID: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true
-    }, 
-    course_ID: {
-        type: mongoose.Schema.Types.ObjectId,
+    student_id: {
+        type: Number,
         required: true
     },
-    taken_Before: {
+    course_id: {
+        type: String,
+        required: true
+    },
+    semester: {
+        type: String,
+        required: true
+    },
+    fourweek_grade: {
+        type: String,
+        required: true
+    },
+    midterm_grade: {
+        type: String,
+        required: true
+    },
+    eightweek_grade: {
+        type: String,
+        required: true
+    },
+    section: {
+        type: Number,
+        required: true
+    },
+    classroom: {
+        type: String,
+        required: true
+    },
+    time: {
+        type: String,
+        required: true
+    },
+    prof_id: {
+        type: String,
+        required: true
+    },
+    taken_before: {
         type: Boolean,
         required: true
     },
-    needs_Tutoring: {
+    needs_tutoring: {
         type: Boolean,
         required: true
     }
 });
+       
 
 module.exports = mongoose.model("StudentClass", studentClassSchema);

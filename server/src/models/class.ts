@@ -1,43 +1,29 @@
 var mongoose = require('mongoose');
 
 const classSchema = new mongoose.Schema({
-    course_ID: {
+    course_id: {
         type: Number,
         required: true
     },
-    date_Time: {
-        type: Date,
+    department: {
+        type: String,
+        required: true
+    },
+    perc_retaken: {
+        type: Number,
         required: true
     },
     classroom: {
-        type: Number,
+        type: String,
         required: true,
     },
-    retaken_Percentage: {
-        type: Number,
-        required: true
-    },
-    dept_Size: {
-        type: Number,
-        required: true
-    },
-    num_Of_Sections: {
-        type: Number,
+    date_time: {
+        type: String,
         required: true
     }, 
-    prof_Class_Exp: {
-        type: Number,
+    course_name: {
+        type: String,
         required: true
-    },
-    course_Type: {
-        type: Number,
-        required: true
-    },
-    is_Stem_Pass: {
-        type: Number,
-        required: true,
-        min: 0,
-        max: 1
     }
 });
 

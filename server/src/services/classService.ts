@@ -18,7 +18,7 @@ const getOneClassByObjectID = async (query) => {
 
 const getOneClassByCourseID = async (query) => {
     try {
-        return await classModel.findOne({course_ID: query});
+        return await classModel.findOne({course_id: query});
     } catch(error) {
         throw Error("Error getting one Class");
     }
@@ -26,15 +26,12 @@ const getOneClassByCourseID = async (query) => {
 
 const createClass = async (query) => {
     const newClass = new classModel({
-        course_ID: query.course_ID,
-        date_Time: query.date_Time,
+        course_id: query.course_id,
+        department: query.department,
+        perc_retaken: query.perc_retaken,
         classroom: query.classroom,
-        retaken_Percentage: query.retaken_Percentage,
-        dept_Size: query.dept_Size,
-        num_Of_Sections: query.num_Of_Sections,
-        prof_Class_Exp: query.prof_Class_Exp,
-        course_Type: query.course_Type,
-        is_Stem_Pass: query.is_Stem_Pass
+        date_time: query.date_time,
+        course_name: query.course_name
     });
     try {
         await newClass.save();
@@ -45,42 +42,38 @@ const createClass = async (query) => {
     }
 }
 
-const updateClassByObjectID = async(id,query) =>{
+const updateClassByObjectID = async(_id,query) =>{
     try {
         await classModel.findOneAndUpdate({
-            _id: id
+            _id: _id
         },
         {
-            course_ID: query.course_ID,
-            date_Time: query.date_Time,
+            course_id: query.course_id,
+            department: query.department,
+            perc_retaken: query.perc_retaken,
             classroom: query.classroom,
-            retaken_Percentage: query.retaken_Percentage,
-            dept_Size: query.dept_Size,
-            num_Of_Sections: query.num_Of_Sections,
-            prof_Class_Exp: query.prof_Class_Exp,
-            course_Type: query.course_Type,
-            is_Stem_Pass: query.is_Stem_Pass
+            date_time: query.date_time,
+            course_name: query.course_name
+
         });
     } catch(error){
         throw Error("Error updating class");
     }
 }
 
-const updateClassByCourseID = async(id,query) =>{
+const updateClassByCourseID = async(course_id,query) =>{
     try {
         await classModel.findOneAndUpdate({
-            course_ID: id
+            course_ID: course_id
         },
         {
-            course_ID: query.course_ID,
-            date_Time: query.date_Time,
+            course_id: query.course_id,
+            department: query.department,
+            perc_retaken: query.perc_retaken,
             classroom: query.classroom,
-            retaken_Percentage: query.retaken_Percentage,
-            dept_Size: query.dept_Size,
-            num_Of_Sections: query.num_Of_Sections,
-            prof_Class_Exp: query.prof_Class_Exp,
-            course_Type: query.course_Type,
-            is_Stem_Pass: query.is_Stem_Pass
+            date_time: query.date_time,
+            course_name: query.course_name
+
         });
     } catch(error){
         throw Error("Error updating class");
@@ -97,7 +90,7 @@ const deleteClassByObjectID = async(query) => {
 
 const deleteClassByCourseID = async(query) => {
     try {
-        await classModel.findOneAndRemove({course_ID: query});
+        await classModel.findOneAndRemove({course_id: query});
     } catch(error) {
         throw Error("Error deleting class");
     }

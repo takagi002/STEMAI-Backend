@@ -18,7 +18,7 @@ const getOneStudentClassByObjectID = async (query) => {
 
 const getOneStudentClassByStudentID = async (query) => {
     try {
-        return await studentClass.findOne({student_ID: query});
+        return await studentClass.findOne({student_id: query});
     } catch(error) {
         throw Error("Error getting one studentClass");
     }
@@ -26,10 +26,18 @@ const getOneStudentClassByStudentID = async (query) => {
 
 const createStudentClass = async (query) => {
     const newStudentClass = new studentClass({
-        student_ID: query.student_ID,
-        course_ID: query.course_ID,
-        taken_Before: query.taken_Before,
-        needs_Tutoring: query.needs_Tutoring
+        student_id: query.student_id,
+        course_id: query.course_id,
+        semester: query.semester,
+        fourweek_grade: query.fourweek_grade,
+        midterm_grade: query.midterm_grade,
+        eightweek_grade: query.eightweek_grade,
+        section: query.section,
+        classroom: query.classroom,
+        time: query.time,
+        prof_id: query.prof_id,
+        taken_before: query.taken_before,
+        needs_tutoring: query.needs_tutoring
     });
     try {
         await newStudentClass.save();
@@ -40,32 +48,48 @@ const createStudentClass = async (query) => {
     }
 }
 
-const updateStudentClassByObjectID = async(id,query) =>{
+const updateStudentClassByObjectID = async(_id,query) =>{
     try {
         await studentClass.findOneAndUpdate({
-            _id: id
+            _id: _id
         },
         {
-            student_ID: query.student_ID,
-            course_ID: query.course_ID,
-            taken_Before: query.taken_Before,
-            needs_Tutoring: query.needs_Tutoring
+            student_id: query.student_id,
+            course_id: query.course_id,
+            semester: query.semester,
+            fourweek_grade: query.fourweek_grade,
+            midterm_grade: query.midterm_grade,
+            eightweek_grade: query.eightweek_grade,
+            section: query.section,
+            classroom: query.classroom,
+            time: query.time,
+            prof_id: query.prof_id,
+            taken_before: query.taken_before,
+            needs_tutoring: query.needs_tutoring
         });
     } catch(error){
         throw Error("Error updating student course");
     }
 }
 
-const updateStudentClassByStudentID = async(id,query) =>{
+const updateStudentClassByStudentID = async(student_id,query) =>{
     try {
         await studentClass.findOneAndUpdate({
-            student_ID: id
+            student_id: student_id
         },
         {
-            student_ID: query.student_ID,
-            course_ID: query.course_ID,
-            taken_Before: query.taken_Before,
-            needs_Tutoring: query.needs_Tutoring
+            student_id: query.student_id,
+            course_id: query.course_id,
+            semester: query.semester,
+            fourweek_grade: query.fourweek_grade,
+            midterm_grade: query.midterm_grade,
+            eightweek_grade: query.eightweek_grade,
+            section: query.section,
+            classroom: query.classroom,
+            time: query.time,
+            prof_id: query.prof_id,
+            taken_before: query.taken_before,
+            needs_tutoring: query.needs_tutoring
         });
     } catch(error){
         throw Error("Error updating student course");
@@ -82,7 +106,7 @@ const deleteStudentClassByObjectID = async(query) => {
 
 const deleteStudentClassByStudentID = async(query) => {
     try {
-        await studentClass.findOneAndRemove({student_ID: query});
+        await studentClass.findOneAndRemove({student_id: query});
     } catch(error) {
         throw Error("Error deleting student class");
     }

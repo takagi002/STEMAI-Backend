@@ -40,7 +40,8 @@ const createUser = async (query) => {
         gannon_id: query.gannon_id,
         idNumber: query.idNumber,
         authenticated: false,
-        notifications: false
+        notifications: false,
+        authenticationCode: 0
     });
     try {
         await newUser.save();

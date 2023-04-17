@@ -12,10 +12,10 @@ const getUsersC = async(req, res) => {
 }
 
 const getOneUserByIDC = async(req, res) => {
-    const ID = req.params.ID
+    const gannon_id = req.params.gannon_id
 
     try{
-        const aUser = await userService.getOneUserByID(ID);
+        const aUser = await userService.getOneUserByGannonID(gannon_id);
 
         res.status(200).json(aUser);
     } catch(error) {

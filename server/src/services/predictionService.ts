@@ -103,7 +103,6 @@ const getPredictionForStudentInClass = async(student_id, currentSemester, course
     var full_prediction;
     try {
        full_prediction = await predictionModel.findOne({student_id: student_id, semester: currentSemester, course_id: course_id});
-       console.log(full_prediction.prediction)
         return full_prediction.prediction;
     } catch(error) {
         throw Error("Error getting one Prediction " + error);
@@ -112,7 +111,7 @@ const getPredictionForStudentInClass = async(student_id, currentSemester, course
 
 module.exports.getPredictions = getPredictions;
 module.exports.getOnePredictionByObjectID = getOnePredictionByObjectID;
-module.exports.getOnePredictionByCourseID = getOnePredictionByStudentID;
+module.exports.getOnePredictionByStudentID = getOnePredictionByStudentID;
 module.exports.createPrediction = createPrediction;
 module.exports.updatePredictionByObjectID = updatePredictionByObjectID;
 module.exports.updatePredictionByStudentID = updatePredictionByStudentID;

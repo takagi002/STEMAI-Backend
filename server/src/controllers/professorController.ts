@@ -15,7 +15,7 @@ const getOneProfesserByProfessorIDC = async(req, res) => {
     const prof_id = req.params.prof_id
 
     try{
-        const professer = await professerService.getOneProfesserByProfessorID(prof_id);
+        const professer = await professerService.getOneProfessorByProfessorID(prof_id);
 
         res.header('Access-Control-Allow-Origin', '*');
         res.status(200).json(professer);
@@ -28,7 +28,7 @@ const getOneProfesserByObjectIDC = async(req, res) => {
     const _id = req.params._id
 
     try{
-        const professer = await professerService.getOneProfesserByObjectID(_id);
+        const professer = await professerService.getOneProfessorByObjectID(_id);
 
         res.header('Access-Control-Allow-Origin', '*');
         res.status(200).json(professer);
@@ -39,7 +39,7 @@ const getOneProfesserByObjectIDC = async(req, res) => {
 
 const createProfesserC = async(req, res) => {
     try{
-        let newProfesser = await professerService.createProfesser(req.body);
+        let newProfesser = await professerService.createProfessor(req.body);
 
         res.header('Access-Control-Allow-Origin', '*');
         res.status(201).json(newProfesser);
@@ -51,7 +51,7 @@ const createProfesserC = async(req, res) => {
 const updateProfesserByObjectIDC = async(req, res) => {
     const _id = req.params._id;
     try{
-        await professerService.updateProfesserByObjectID(_id, req.body);
+        await professerService.updateProfessorByObjectID(_id, req.body);
 
         res.header('Access-Control-Allow-Origin', '*');
         res.status(202).json(_id);
@@ -63,7 +63,7 @@ const updateProfesserByObjectIDC = async(req, res) => {
 const updateProfesserByProfessorIDC = async(req, res) => {
     const prof_id = req.params.prof_id;
     try{
-        await professerService.updateProfesserByProfessorID(prof_id, req.body);
+        await professerService.updateProfessorByProfessorID(prof_id, req.body);
 
         res.header('Access-Control-Allow-Origin', '*');
         res.status(202).json(prof_id);
@@ -75,7 +75,7 @@ const updateProfesserByProfessorIDC = async(req, res) => {
 const deleteProfesserByObjectIDC = async(req, res) => {
     const _id = req.params._id;
     try{
-        await professerService.deleteProfesserByObjectID(_id, req.body);
+        await professerService.deleteProfessorByObjectID(_id, req.body);
 
         res.header('Access-Control-Allow-Origin', '*');
         res.status(203).json(_id);
@@ -87,7 +87,7 @@ const deleteProfesserByObjectIDC = async(req, res) => {
 const deleteProfesserByProfessorIDC = async(req, res) => {
     const prof_id = req.params.prof_id;
     try{
-        await professerService.deleteProfesserByProfessorID(prof_id, req.body);
+        await professerService.deleteProfessorByProfessorID(prof_id, req.body);
 
         res.header('Access-Control-Allow-Origin', '*');
         res.status(203).json(prof_id);

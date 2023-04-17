@@ -20,21 +20,24 @@ const getOneProfessorByProfessorID = async (query) => {
     try {
         return await professor.findOne({prof_id: query});
     } catch(error) {
-        throw Error("Error getting one Professor");
+        throw Error("Error getting one Professor: " + error);
     }
 }
 
 const createProfessor = async (query) => {
     const newProfessor = new professor({
         prof_id: query.prof_id,
-
+        dept: query.dept,
+        experience: query.experience,
+        tenured: query.tenured,
+        perc_passed: query.perc_passed
     });
     try {
         await newProfessor.save();
 
         return newProfessor;
     } catch (error){
-        throw Error("Error creating Professor");
+        throw Error("Error creating Professor: " + error);
     }
 }
 

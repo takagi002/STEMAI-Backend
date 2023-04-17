@@ -36,6 +36,10 @@ const studentSchema = new mongoose.Schema({
     num_courses_taking: {
         type: Number,
         required: true
+    },
+    name: {
+        type : String,
+        required: true
     }
     
 });

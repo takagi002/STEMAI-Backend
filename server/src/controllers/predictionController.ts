@@ -11,11 +11,11 @@ const getPredictionsC = async(req, res) => {
     }
 }
 
-const getOnePredictionByCourseIDC = async(req, res) => {
+const getOnePredictionByStudentIDC = async(req, res) => {
     const student_id = req.params.student_id
 
     try{
-        const aPrediction = await predictionService.getOnePredictionByCourseID(student_id);
+        const aPrediction = await predictionService.getOnePredictionByStudentID(student_id);
 
         res.header('Access-Control-Allow-Origin', '*');
         res.status(200).json(aPrediction);
@@ -73,10 +73,10 @@ const updatePredictionByObjectIDC = async(req, res) => {
     }
 }
 
-const updatePredictionByCourseIDC = async(req, res) => {
+const updatePredictionByStudentIDC = async(req, res) => {
     const student_id = req.params.student_id;
     try{
-        await predictionService.updatePredictionByCourseID(student_id, req.body);
+        await predictionService.updatePredictionByStudentID(student_id, req.body);
 
         res.header('Access-Control-Allow-Origin', '*');
         res.status(202).json(student_id);
@@ -97,10 +97,10 @@ const deletePredictionByObjectIDC = async(req, res) => {
     }
 }
 
-const deletePredictionByCourseIDC = async(req, res) => {
+const deletePredictionByStudentIDC = async(req, res) => {
     const student_id = req.params.student_id;
     try{
-        await predictionService.deletePredictionByCourseID(student_id, req.body);
+        await predictionService.deletePredictionByStudentID(student_id, req.body);
 
         res.header('Access-Control-Allow-Origin', '*');
         res.status(203).json(student_id);
@@ -125,12 +125,12 @@ const getPredictionsForStudentInClassC = async(req, res) => {
 
 module.exports.getPredictionsC = getPredictionsC;
 module.exports.getOnePredictionByObjectIDC = getOnePredictionByObjectIDC;
-module.exports.getOnePredictionByCourseIDC = getOnePredictionByCourseIDC;
+module.exports.getOnePredictionByStudentIDC = getOnePredictionByStudentIDC;
 module.exports.createPredictionC = createPredictionC;
 module.exports.updatePredictionByObjectIDC = updatePredictionByObjectIDC;
-module.exports.updatePredictionByCourseIDC = updatePredictionByCourseIDC;
+module.exports.updatePredictionByStudentIDC = updatePredictionByStudentIDC;
 module.exports.deletePredictionByObjectIDC = deletePredictionByObjectIDC;
-module.exports.deletePredictionByCourseIDC = deletePredictionByCourseIDC;
+module.exports.deletePredictionByStudentIDC = deletePredictionByStudentIDC;
 module.exports.getPredictionsFromStudentIDC = getPredictionsFromStudentIDC;
 module.exports.getPredictionForStudentInClassC = getPredictionsForStudentInClassC;
 

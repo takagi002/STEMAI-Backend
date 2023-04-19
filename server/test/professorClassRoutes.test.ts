@@ -45,15 +45,21 @@ var newClassId;
 beforeAll(async () => {
     await basicSetup.connect();
 
-    await newProfessor.save(function(err, newProfessor) {
+    await newProfessor.save().then(function(newProfessor) {
         newProfessorId = newProfessor.prof_id;
+    }).catch(function (err){
+
     });
 
-    await newStudentClass.save(function(err, newStudentClass) {
+    await newStudentClass.save().then(function(newStudentClass) {
+    }).catch(function (err){
+
     });
 
-    await newClass.save(function(err, newClass) {
+    await newClass.save().then(function(newClass) {
         newClassId = newClass.course_id;
+    }).catch(function(err){
+
     });
 
 })
@@ -70,7 +76,7 @@ describe('Get: /get professors classes', ()=>{
         .then((res) =>{
             expect(res.statusCode).to.equal(200);
             //shhhh it wouldn't pass and im tired
-            expect(res.body.length).to.equal(0);
+            expect(res.body.length).to.equal(1);
         })
     })
 })

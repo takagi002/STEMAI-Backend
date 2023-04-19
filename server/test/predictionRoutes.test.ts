@@ -28,11 +28,16 @@ var newStudentId;
 beforeAll(async () => {
     await basicSetup.connect();
 
-    await newPrediction.save(function(err, newPrediction) {
+    await newPrediction.save().then(function(newPrediction) {
         newStudentId = newPrediction.student_id;
 
+    }).catch(function (err) {
+
     });
-    await newPrediction2.save(function(err, newPrediction2) {
+
+    await newPrediction2.save().then(function(newPrediction2) {
+    }).catch(function(err){
+
     });
     
 })

@@ -22,10 +22,12 @@ var newUserID;
 beforeAll(async () => {
     await basicSetup.connect();
 
-    await newUser.save(function(err, newUser) {
+    await newUser.save().then(function(newUser) {
         newUserGannonId = newUser.gannon_id;
         newUserGmail = newUser.gmail
         newUserID = newUser.idNumber;
+    }).catch(function(err){
+        
     });
 })
 

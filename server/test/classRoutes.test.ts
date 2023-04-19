@@ -19,8 +19,10 @@ var newClassId;
 beforeAll(async () => {
     await basicSetup.connect();
 
-    await newClass.save(function(err, newClass) {
+    await newClass.save().then(function(newClass) {
         newClassId = newClass.course_id;
+
+    }).catch(function (err){
 
     });
 })

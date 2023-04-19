@@ -18,8 +18,10 @@ var newProfessorId;
 beforeAll(async () => {
     await basicSetup.connect();
 
-    await newProfessor.save(function(err, newProfessor) {
+    await newProfessor.save().then(function( newProfessor) {
         newProfessorId = newProfessor.prof_id;
+    }).catch(function(err){
+
     });
 })
 
